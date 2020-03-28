@@ -1,0 +1,5 @@
+rootProject.name='Sample Android DI Intercation'
+include ':app'
+include ':awesome'
+include ':common'
+include ':horrible'
