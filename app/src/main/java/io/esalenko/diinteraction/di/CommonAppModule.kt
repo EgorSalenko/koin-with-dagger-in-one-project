@@ -7,42 +7,29 @@ import io.esalenko.common.service.ApiService
 import io.esalenko.common.service.StringGenerator
 import io.esalenko.common.service.TrackingService
 import io.esalenko.diinteraction.main.MainRepository
-import org.koin.core.Koin
-import org.koin.core.context.KoinContextHandler
+import org.koin.java.KoinJavaComponent
 
 @Module(includes = [NetModule::class, TrackingModule::class])
 class CommonAppModule {
+
+    val stringGenerator = KoinJavaComponent.inject(StringGenerator::class.java)
 
     @Provides
     fun provideContext(app: Application) = app.applicationContext
 
     @Provides
     fun provideStringGenerator(): StringGenerator {
-        return StringGenerator()
+        return StringGenerator().koinInject()
     }
 
     @Provides
-    fun provideMainRepository() =
-        MainRepository(/*generator, trackingService*/)
-
-    @Provides
-    fun providesKoin(
+    fun provideMainRepository(
         generator: StringGenerator,
         trackingService: TrackingService,
         apiService: ApiService
-    ): Koin {
-        return KoinContextHandler.get().apply {
-            declare(generator)
-            declare(trackingService)
-            declare(apiService)
-        }
-    }
+    ) =
+        MainRepository(generator, trackingService, apiService)
+
 }
 
-
-inline fun <reified T : Any> T.declareWithKoin(): T {
-    return lazy(LazyThreadSafetyMode.NONE) {
-        KoinContextHandler.get().declare(this)
-        this
-    }.value
-}
+inline fun <reified T : Any> T.koinInject(): T = KoinJavaComponent.inject(this::class.java).value

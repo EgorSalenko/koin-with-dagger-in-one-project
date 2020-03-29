@@ -1,10 +1,9 @@
 package io.esalenko.common.service
 
 import android.util.Log
-import javax.inject.Inject
 
 
-class ApiService @Inject constructor() {
+class ApiService {
 
     companion object {
         const val TAG = "ApiService"

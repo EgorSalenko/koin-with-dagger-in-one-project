@@ -5,10 +5,10 @@ import io.esalenko.common.service.StringGenerator
 import io.esalenko.common.service.TrackingService
 import kotlinx.coroutines.delay
 
-class HorribleRepository constructor(
-    val stringGenerator: StringGenerator,
-    val trackingService: TrackingService,
-    val apiService: ApiService
+class HorribleRepository(
+    private val stringGenerator: StringGenerator,
+    private var trackingService: TrackingService,
+    private var apiService: ApiService
 ) {
 
     suspend fun doSomeHorrible(): String {

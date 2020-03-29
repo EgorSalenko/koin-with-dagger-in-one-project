@@ -10,16 +10,11 @@ import io.esalenko.diinteraction.AwesomeApplication
 import io.esalenko.diinteraction.R
 import io.esalenko.horrible.HorribleActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import org.koin.core.Koin
-import javax.inject.Inject
+
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
-    val viewModel: MainViewModel by viewModels()
-
-    // FIXME :: Think how to inject globally
-    @Inject
-    lateinit var koin: Koin
+    private val viewModel: MainViewModel by viewModels()
 
     private val app by lazy { application as AwesomeApplication }
 
