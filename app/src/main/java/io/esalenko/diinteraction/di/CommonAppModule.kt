@@ -18,9 +18,7 @@ class CommonAppModule {
     fun provideContext(app: Application) = app.applicationContext
 
     @Provides
-    fun provideStringGenerator(): StringGenerator {
-        return StringGenerator().koinInject()
-    }
+    fun provideStringGenerator(): StringGenerator = koinInject()
 
     @Provides
     fun provideMainRepository(
@@ -32,4 +30,4 @@ class CommonAppModule {
 
 }
 
-inline fun <reified T : Any> T.koinInject(): T = KoinJavaComponent.inject(this::class.java).value
+inline fun <reified T : Any> koinInject(): T = KoinJavaComponent.inject(T::class.java).value
