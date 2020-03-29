@@ -1,2 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="io.esalenko.horrible" />
+    package="io.esalenko.horrible">
+
+    <application>
+        <activity android:name=".HorribleActivity" />
+    </application>
+</manifest>

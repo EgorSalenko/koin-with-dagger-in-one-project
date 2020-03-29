@@ -23,11 +23,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
 }
 
 dependencies {
     def koin_version = "2.1.5"
-    def dagger_version = "2.26"
+    def dagger_version = "2.27"
+    def lifecycle_version = "2.2.0"
+
+
+    api 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.5'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     api "org.koin:koin-android:$koin_version"
@@ -40,11 +47,14 @@ dependencies {
     // or Koin for Android Fragment Factory (unstable version)
     api "org.koin:koin-androidx-fragment:$koin_version"
 
+    api "androidx.activity:activity-ktx:1.2.0-alpha02"
+
+    // ViewModel
+    api "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    // Dagger
     api "com.google.dagger:dagger:$dagger_version"
-    api "com.google.dagger:dagger-android:$dagger_version"
-    api "com.google.dagger:dagger-android-support:$dagger_version"
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
-    kapt "com.google.dagger:dagger-android-processor:$dagger_version"
+
 
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     api 'androidx.appcompat:appcompat:1.1.0'
