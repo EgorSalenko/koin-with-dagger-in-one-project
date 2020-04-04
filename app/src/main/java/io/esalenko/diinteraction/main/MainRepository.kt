@@ -9,8 +9,8 @@ import javax.inject.Inject
 
 class MainRepository @Inject constructor(
     private val stringGenerator: StringGenerator,
-    val trackingService: TrackingService,
-    val apiService: ApiService
+    private val trackingService: TrackingService,
+    private val apiService: ApiService
 ) {
 
     suspend fun doSomethinOnBackThread(): String {

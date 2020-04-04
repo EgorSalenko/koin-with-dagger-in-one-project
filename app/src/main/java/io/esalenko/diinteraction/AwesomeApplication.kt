@@ -7,9 +7,7 @@ import io.esalenko.diinteraction.di.delegate.AppDelegateActivity
 import io.esalenko.diinteraction.di.delegate.AppDelegateViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
-import org.koin.core.Koin
 import org.koin.core.context.startKoin
-import javax.inject.Inject
 
 class AwesomeApplication : Application() {
 
@@ -19,9 +17,6 @@ class AwesomeApplication : Application() {
 
     lateinit var viewModelDelegate: AppDelegateViewModel
     lateinit var activityDelegate: AppDelegateActivity
-
-    @Inject
-    lateinit var koin: Koin
 
     override fun onCreate() {
         super.onCreate()

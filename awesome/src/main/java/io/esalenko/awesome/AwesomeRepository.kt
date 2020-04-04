@@ -6,14 +6,12 @@ import kotlinx.coroutines.delay
 
 class AwesomeRepository(
     private val awesomeStringGenerator: StringGenerator,
-    val trackingService: TrackingService
-//    val apiService: ApiService
+    private val trackingService: TrackingService
 ) {
 
     suspend fun doAwesomeWorkOnBackground(): String {
         delay(1000)
         trackingService.trackAwesome()
-//        apiService.getOne()
         return "It's awesome ${awesomeStringGenerator.getString()}"
     }
 
